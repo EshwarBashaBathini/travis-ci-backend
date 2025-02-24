@@ -1,0 +1,21 @@
+language: java
+jdk:
+  - openjdk17  # Specify the JDK version you want to use
+
+install:
+  - mvn install -DskipTests=true  # Install dependencies, but skip tests to speed up the process
+
+script:
+  - mvn clean package -DskipTests  # Build the project (skip tests)
+
+deploy:
+  provider: azure_web_apps
+  app: eshwar-backend  # The name of your Azure App Service
+  subscription_id: f1f8ac17-40f9-4ab8-9125-b7c5023c2ace
+  client_id: f1db75c3-09cc-474c-a124-052bcb6cfc06
+  client_secret: dfk8Q~n8ah5zGeu8l9uJhimL3ls.ASJ6v.azbaAf
+  tenant_id: 118b2919-e434-405b-9f3c-3a829eba55f9
+  resource_group: eshwar # The name of your Azure Resource Group
+
+  on:
+    branch: main  # Deploy only on changes to the main branch (adjust as needed)
